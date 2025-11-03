@@ -1,98 +1,110 @@
-import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
+import { useState } from "react";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
-import { HelloWave } from '@/components/hello-wave';
-import ParallaxScrollView from '@/components/parallax-scroll-view';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-import { Link } from 'expo-router';
+import Bai10 from "@/src/bai10_DanhSachSinhVien/App";
+import Bai2 from "@/src/bai2_HelloWorld/App";
+import Bai3 from "@/src/bai3_GiaoDienCoBan/App";
+import Bai4 from "@/src/bai4_DanhThiep/App";
+import Bai5 from "@/src/bai5_TinhDiemTrungBinh/App";
+import Bai6 from "@/src/bai6_DoiMauNen/App";
+import Bai7 from "@/src/bai7_TodoList/App";
+import Bai8 from "@/src/bai8_StackNavigation/App";
+import Bai9 from "@/src/bai9_TabNavigation/App";
 
-export default function HomeScreen() {
+export default function App() {
+  const [selected, setSelected] = useState<string | null>(null);
+
+  if (selected === "bai2") return <Bai2 goBack={() => setSelected(null)} />;
+  if (selected === "bai3") return <Bai3 goBack={() => setSelected(null)} />;
+  if (selected === "bai4") return <Bai4 goBack={() => setSelected(null)} />;
+  if (selected === "bai5") return <Bai5 goBack={() => setSelected(null)} />;
+  if (selected === "bai6") return <Bai6 goBack={() => setSelected(null)} />;
+  if (selected === "bai7") return <Bai7 goBack={() => setSelected(null)} />;
+  if (selected === "bai8") return <Bai8 goBack={() => setSelected(null)} />;
+  if (selected === "bai9") return <Bai9 goBack={() => setSelected(null)} />;
+  if (selected === "bai10") return <Bai10 goBack={() => setSelected(null)} />;
+
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12',
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <Link href="/modal">
-          <Link.Trigger>
-            <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-          </Link.Trigger>
-          <Link.Preview />
-          <Link.Menu>
-            <Link.MenuAction title="Action" icon="cube" onPress={() => alert('Action pressed')} />
-            <Link.MenuAction
-              title="Share"
-              icon="square.and.arrow.up"
-              onPress={() => alert('Share pressed')}
-            />
-            <Link.Menu title="More" icon="ellipsis">
-              <Link.MenuAction
-                title="Delete"
-                icon="trash"
-                destructive
-                onPress={() => alert('Delete pressed')}
-              />
-            </Link.Menu>
-          </Link.Menu>
-        </Link>
+    <View style={styles.container}>
+      <Text style={styles.title}>Chọn bài </Text>
 
-        <ThemedText>
-          {`Tap the Explore tab to learn more about what's included in this starter app.`}
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          {`When you're ready, run `}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => setSelected("bai2")}
+      >
+        <Text style={styles.buttonText}>Bài 2 - Hello World</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => setSelected("bai3")}
+      >
+        <Text style={styles.buttonText}>Bài 3 - Giao diện cơ bản</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => setSelected("bai4")}
+      >
+        <Text style={styles.buttonText}>Bài 4 - Danh thiếp cá nhân</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => setSelected("bai5")}
+      >
+        <Text style={styles.buttonText}>Bài 5 - Tính điểm trung bình</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => setSelected("bai6")}
+      >
+        <Text style={styles.buttonText}>Bài 6 - Đổi màu nền</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => setSelected("bai7")}
+      >
+        <Text style={styles.buttonText}>Bài 7 - Danh sách công việc</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => setSelected("bai8")}
+      >
+        <Text style={styles.buttonText}>Bài 8 - Stack Navigation</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => setSelected("bai9")}
+      >
+        <Text style={styles.buttonText}>Bài 9 - Tab Navigation</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => setSelected("bai10")}
+      >
+        <Text style={styles.buttonText}>Bài 10 - Danh sách sinh viên</Text>
+      </TouchableOpacity>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    gap: 16,
+    backgroundColor: "#f9f9f9",
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
+  title: { fontSize: 22, fontWeight: "bold", marginBottom: 10 },
+  button: {
+    backgroundColor: "#007bff",
+    paddingVertical: 12,
+    paddingHorizontal: 20,
+    borderRadius: 8,
   },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
-  },
+  buttonText: { color: "#fff", fontSize: 16 },
 });
